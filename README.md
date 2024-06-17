@@ -12,7 +12,7 @@
 
 **Institution: Grand Valley State University**
 
-<img src="plantlogo.png" alt="PlantLogo" width="200"/>
+<img src="images/plantlogo.png" alt="PlantLogo" width="200"/>
 
 # 1 Abstract
 
@@ -32,20 +32,20 @@ The Happy Plants app is based on the client-server architecture. The app caters 
 
 ## 3.1 Class Diagram
 <figure style="text-align: center;">
-    <img src="Class.png" alt="Class Diagram">
+    <img src="images/Class.png" alt="Class Diagram">
     <figcaption>Figure 2: Class Diagram</figcaption>
 </figure>
 
 ## 3.2 Sequence Diagram
 <figure style="text-align: center;">
-    <img src="Sequence1.png" alt="Sequence Diagram 1">
-    <img src="Sequence2.png" alt="Sequence Diagram 2">
+    <img src="images/Sequence1.png" alt="Sequence Diagram 1">
+    <img src="images/Sequence2.png" alt="Sequence Diagram 2">
     <figcaption>Figure 3: Sequence Diagram</figcaption>
 </figure>
 
 ## 3.3 Activity Diagram
 <figure style="text-align: center;">
-    <img src="Activity Diagram.png" alt="Activity Diagram">
+    <img src="images/Activity Diagram.png" alt="Activity Diagram">
     <figcaption>Figure 4: Activity Diagram</figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ The Happy Plants app is based on the client-server architecture. The app caters 
 
 ### 4.1 Home Screen
 <figure style="text-align: center;">
-    <img src="homescreen.png" alt="Home Screen">
+    <img src="images/homescreen.png" alt="Home Screen">
     <figcaption style="text-align: center;">
         Figure 5: Home Screen
     </figcaption>
@@ -65,7 +65,7 @@ The home screen of Happy Plants displays the ability to search for plants, selec
 
 ### 4.2 Search Screen
 <figure style="text-align: center;">
-    <img src="searchscreen.png" alt="Search Screen">
+    <img src="images/searchscreen.png" alt="Search Screen">
     <figcaption style="text-align: center;">
         Figure 6: Search Screen
     </figcaption>
@@ -75,7 +75,7 @@ The search screen allows users to search for plants by name, type, or specific c
 
 ### 4.3 Location Screen
 <figure style="text-align: center;">
-    <img src="locationscreen.png" alt="Location Screen">
+    <img src="images/locationscreen.png" alt="Location Screen">
     <figcaption style="text-align: center;">
         Figure 7: Location Screen
     </figcaption>
@@ -85,7 +85,7 @@ The location screen helps users find plants suitable for their geographical loca
 
 ### 4.4 Plants by Location Screen
 <figure style="text-align: center;">
-    <img src="plantlocationscreen.png" alt="Plants by Location Screen">
+    <img src="images/plantlocationscreen.png" alt="Plants by Location Screen">
     <figcaption style="text-align: center;">
         Figure 8: Plants by Location Screen
     </figcaption>
