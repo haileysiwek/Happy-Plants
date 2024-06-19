@@ -1,0 +1,2 @@
+HappyPlants Database Outline - https://docs.google.com/document/d/1Kh-uGlrJo8kOzj6gnUHhovsMnleX8J_4ya5t0RFI2-o
+JIRA - https://siwekhcis350.atlassian.net/jira/software/projects/CGP/boards/2?sprintStarted=true&atlOrigin=eyJpIjoiMzNlN2VhZmZlZDEyNDRhMDhjMzUxZGUzMWEwMTEzYTgiLCJwIjoiaiJ9

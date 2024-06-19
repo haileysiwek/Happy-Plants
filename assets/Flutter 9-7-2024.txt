@@ -1,0 +1,405 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:mongo_dart/mongo_dart.dart' show Db, DbCollection;
+import 'dart:developer';
+
+void main() => runApp(MaterialApp(
+      title: "Happy Plants App",
+      home: Home(),
+      debugShowCheckedModeBanner: false,
+    ));
+
+class Home extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _HomeState();
+  }
+}
+
+class _HomeState extends State<Home> {
+  String selectedContinent = '';
+
+  Future<void> _connectToDatabase() async {
+    await MongoDatabase.connect();
+  }
+
+  void _navigateToScreen(BuildContext context, Widget screen) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => screen),
+    ).then((result) {
+      if (result != null && result is String) {
+        setState(() {
+          selectedContinent = result;
+        });
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _connectToDatabase();
+
+    return Scaffold(
+      body: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height / 5,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.white,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    "Welcome to Happy Plants!",
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Image.asset(
+                  'images/plantlogo.png',
+                  height: 50.0,
+                  width: 50.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "Let's improve your green thumb.",
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: ListView(
+                children: [
+                  InkWell(
+                    onTap: () =>
+                        _navigateToScreen(context, SearchPlantsScreen()),
+                    child: ListTile(
+                      leading: FaIcon(FontAwesomeIcons.magnifyingGlass),
+                      title: Text("Search Plants"),
+                      trailing: Text("->"),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => _navigateToScreen(context, MyPlantsScreen()),
+                    child: ListTile(
+                      leading: FaIcon(FontAwesomeIcons.plantWilt),
+                      title: Text("My Plants"),
+                      trailing: Text("->"),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => _navigateToScreen(
+                      context,
+                      MyLocationScreen(),
+                    ),
+                    child: ListTile(
+                      leading: FaIcon(FontAwesomeIcons.earth),
+                      title: Text("My Location"),
+                      trailing: Text("->"),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => _navigateToScreen(
+                      context,
+                      PlantsByLocationScreen(
+                          selectedContinent: selectedContinent),
+                    ),
+                    child: ListTile(
+                      leading: FaIcon(FontAwesomeIcons.sunPlantWilt),
+                      title: Text("Plants by Location"),
+                      trailing: Text("->"),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SearchPlantsScreen extends StatefulWidget {
+  @override
+  _SearchPlantsScreenState createState() => _SearchPlantsScreenState();
+}
+
+class _SearchPlantsScreenState extends State<SearchPlantsScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final TextEditingController _textController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+  List<String> _filteredList = [];
+  List<String> _options = [
+    'Family',
+    'Lomariopsidaceae',
+    'Asparagaceae',
+    'Mint',
+    'Lamiaceae',
+    'Moraceae',
+    'Malvaceae',
+    'Araliaceae',
+    'Cactaceae',
+    'Araceae',
+    'Jasminus',
+    'Asphodelaceae'
+  ];
+  String _selectedOption = 'Unknown'; //MME
+  String newValue = 'Unknown';
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedOption = _options[0]; // Set default selected option
+  }
+
+  void _filterLogListBySearchText(String? searchText) {
+    // Modification made here
+    // Implement the logic to filter the list based on the search text and selected option
+    setState(() {
+      _filteredList = _options
+          .where((option) => option.contains(searchText ?? ''))
+          .toList(); // Modification made here
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+
+    return Scaffold(
+      key: _scaffoldKey,
+      appBar: AppBar(
+        title: Container(
+          height: 40,
+          decoration: BoxDecoration(
+              color: const Color(0xffF5F5F5),
+              borderRadius: BorderRadius.circular(5)),
+          child: Row(children: [
+            DropdownButton<String>(
+              value: _selectedOption,
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedOption = newValue!;
+                  _filterLogListBySearchText(_textController.text);
+                });
+              },
+              items: _options.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+            SizedBox(width: 8),
+            Expanded(
+              child: TextField(
+                controller: _textController,
+                decoration: InputDecoration(
+                  prefixIcon: IconButton(
+                    icon: Icon(
+                      Icons.search_rounded,
+                      color: Theme.of(context).primaryColorDark,
+                    ),
+                    onPressed: () => FocusScope.of(context).unfocus(),
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      Icons.clear_rounded,
+                      color: Theme.of(context).primaryColorDark,
+                    ),
+                    onPressed: () {
+                      _textController.text = "";
+                      _filterLogListBySearchText("");
+                    },
+                  ),
+                  hintText: 'Search...',
+                  border: InputBorder.none,
+                ),
+                onChanged: _filterLogListBySearchText, // Modification made here
+                onSubmitted:
+                    _filterLogListBySearchText, // Modification made here
+              ),
+            ),
+          ] /*if (_selectedOption != null && _selectedOption!.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'Your Location: $_selectedOption',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              Expanded(
+                child: Center(
+                  child: Text('Plants by Location Screen'),
+                ),
+              ),
+            ],*/
+              ),
+        ),
+        iconTheme: IconThemeData(
+          color: Theme.of(context).primaryColorDark,
+        ),
+        backgroundColor: Theme.of(context).backgroundColor,
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(
+          screenSize.height * 0.05,
+          screenSize.height * 0.1,
+          screenSize.height * 0.05,
+          0,
+        ),
+        child: ListView.builder(
+          physics: const AlwaysScrollableScrollPhysics(),
+          controller: _scrollController,
+          itemCount: _filteredList.length,
+          shrinkWrap: true,
+          padding: const EdgeInsets.only(bottom: 10),
+          itemBuilder: (BuildContext context, int index) {
+            // Build your card items here based on the filtered list
+            return Card(
+              child: ListTile(
+                title: Text(_filteredList[index]),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class MyPlantsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('My Plants')),
+      body: Center(child: Text('My Plants Screen')),
+    );
+  }
+}
+
+class MyLocationScreen extends StatefulWidget {
+  @override
+  _MyLocationScreenState createState() => _MyLocationScreenState();
+}
+
+class _MyLocationScreenState extends State<MyLocationScreen> {
+  final List<String> continents = [
+    'Africa',
+    'Antarctica',
+    'Asia',
+    'Europe',
+    'North America',
+    'Oceania',
+    'South America'
+  ];
+  String selectedContinent = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('My Location')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: continents.map((continent) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    selectedContinent = continent;
+                  });
+                  Navigator.pop(
+                      context, continent); // Return the selected continent
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: selectedContinent == continent ? Colors.green : null,
+                  minimumSize: Size(300, 60),
+                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                ),
+                child: Text(
+                  continent,
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+
+class PlantsByLocationScreen extends StatelessWidget {
+  final String? selectedContinent;
+
+  PlantsByLocationScreen({this.selectedContinent});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Plants by Location')),
+      body: Column(
+        children: [
+          if (selectedContinent != null && selectedContinent!.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Your Location: $selectedContinent',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+          Expanded(
+            child: Center(
+              child: Text('Plants by Location Screen'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MongoDatabase {
+  static Db? db;
+  // static final DbCollection user = db!.collection(HAPPYPLANTS);
+  // static final DbCollection allPlants = db!.collection(plants);
+
+  static Future<void> connect() async {
+    try {
+      db = await Db.create(
+          'mongodb+srv://tilleral:happyplants@happyplants.zoga378.mongodb.net/HAPPYPLANTS?retryWrites=true&w=majority&appName=HappyPlants');
+      await db!.open();
+      inspect(db);
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  static Future<void> close() async {
+    try {
+      await db!.close();
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+}
