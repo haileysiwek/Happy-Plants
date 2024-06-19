@@ -2,7 +2,7 @@
 
 # Happy Plants
 
-## A Comprehensive Guide to Maintaining Healthy Plants
+## A Comprehensive Resource for Maintaining Healthy Plants
 
 **Authors: Taylor Fettig, Alex Tillery, Hailey Siwek**
 
@@ -28,32 +28,46 @@ Happy Plants is a user-friendly application that revolutionizes the way plant en
 
 # 3 Architectural Design
 
-The Happy Plants app is based on the client-server architecture. The app caters to plant enthusiasts by offering a search function that filters plants by name or family and a feature that identifies plants based on the app user's general location. Users can view personalized care routines for each plant and discover similar plants for easier care alternatives. This comprehensive app empowers users to find the perfect plant match and ensure their leafy companions flourish.
+The Happy Plants app is based on the BLANK architecture. The app caters to plant enthusiasts by offering a search function that filters plants by name or family and a feature that identifies plants based on the app user's general location. Users can view personalized care routines for each plant and discover similar plants for easier care alternatives. This comprehensive app empowers users to find the perfect plant match and ensure their leafy companions flourish.
 
 ## 3.1 Class Diagram
+This section contains a class diagram for the Happy Plants app system. Figure 1 shows a boundary class, the 6 control classes: MyLocationScreen, SearchPlantsScreen, PlantsByLocationScreen, Plant, Main, and Home, and the 3 entity classes: filterPlantsByLocation, fetchPlants, and PlantDetailsScreen.
 <figure style="text-align: center;">
     <img src="images/Class.png" alt="Class Diagram">
-    <figcaption>Figure 2: Class Diagram</figcaption>
+    <figcaption>Figure 1: Class Diagram</figcaption>
 </figure>
 
 ## 3.2 Sequence Diagram
+This section contains a sequence diagram for the Happy Plants app system. Figure 2 shows the order of operations associated with the functionality of the Happy Plants application.
 <figure style="text-align: center;">
     <img src="images/Sequence1.png" alt="Sequence Diagram 1">
     <img src="images/Sequence2.png" alt="Sequence Diagram 2">
-    <figcaption>Figure 3: Sequence Diagram</figcaption>
+    <figcaption>Figure 2: Sequence Diagram</figcaption>
 </figure>
 
-## 3.3 Activity Diagram
+## 3.3 Communication Diagram
+As approved by the CIS 350 course instructor, a communication diagram was used in place of an activity diagram. This section contains a communication diagram for the Happy Plants app system. Figure 3 shows the communication interactions between the app user, the user interface class, the 3 control classes: MyLocationScreen, SearchPlantsScreen, and PlantsByLocationScreen, and the 3 entity classes: FilterPlantsByLocation, fetchPlants, and PlantDetailsScreen.
 <figure style="text-align: center;">
     <img src="images/Activity Diagram.png" alt="Activity Diagram">
-    <figcaption>Figure 4: Activity Diagram</figcaption>
+    <figcaption>Figure 3: Communication Diagram</figcaption>
+</figure>
+
+## 3.4 Use Case Diagram
+This section contains a use case diagram for the Happy Plants app system. Figure 4 shows the various cases in which the app user can utilize the Happy Plants application to meet their plants needs and find new plants to add to their home.
+<figure style="text-align: center;">
+    <img src="images/Activity Diagram.png" alt="Activity Diagram">
+    <figcaption>Figure 4: Use Case Diagram</figcaption>
 </figure>
 
 ---
 
 ## 4 User Guide/Implementation
 
-### 4.1 Home Screen
+### 4.1 Starting the Application
+The user needs to install the “Happy Plants” application on his Android based device. After installation, the icon of the app will feature on the Home Screen of the user’s device, and the user is to simply launch the application to get started.
+
+### 4.2 Home Screen
+The home screen of the Happy Plants application displays the ability to search for plants, input the app user's location, and to view plants that will likely thrive within the general climate of the user's selected location.
 <figure style="text-align: center;">
     <img src="images/homescreen.png" alt="Home Screen">
     <figcaption style="text-align: center;">
@@ -61,37 +75,33 @@ The Happy Plants app is based on the client-server architecture. The app caters 
     </figcaption>
 </figure>
 
-The home screen of Happy Plants displays the ability to search for plants, select your location, and view plants in your location.
-
-### 4.2 Search Screen
+### 4.3 Search Plants Screen
+Navigating to the "Search Plants" screen from the home screen, the search screen allows users to select a desired plant from the full knowledge database list, search for plants by their name, or filter plants by their family. Upon the user selecting a plant from the full or filtered list, a page with all the details and care routine information for the desired plant will be displayed. The app user may select to navigate back to the previous screen at any point using the back arrow in the upper lefthand corner of the page.
 <figure style="text-align: center;">
     <img src="images/searchscreen.png" alt="Search Screen">
     <figcaption style="text-align: center;">
-        Figure 6: Search Screen
+        Figure 6: Search Plants Screen
     </figcaption>
 </figure>
 
-The search screen allows users to search for plants by name, type, or specific care needs. It provides detailed plant profiles with care instructions.
-
-### 4.3 Location Screen
+### 4.4 Location Input Screen
+Navigating to the "My Location" screen from the home screen, the location screen helps users find plants suitable for their geographical location. On the page, the user must simply selected one of the listed general locations to represent their personal home gardening location.
 <figure style="text-align: center;">
     <img src="images/locationscreen.png" alt="Location Screen">
     <figcaption style="text-align: center;">
-        Figure 7: Location Screen
+        Figure 7: My Location Screen
     </figcaption>
 </figure>
 
-The location screen helps users find plants suitable for their geographical location. It suggests plants based on local climate and environmental conditions.
-
-### 4.4 Plants by Location Screen
+### 4.5 Plants by Location Screen
+Navigating to the "Plants by Location" screen from the home screen, this screen displays plants commonly found in the user's selected location from the "My Location" page, helping users choose plants that thrive in their general environment. Figure 8 shows the generated "Plants by Location" screen when the user had selected "North America" for their location on the "My Location" screen. The page in Figure 8 contains a filtered list of all the plants within the application's knowledge base that are commonly located in North America.
+Upon the user selecting a plant from the generated list, a page with all the details and care routine information for the desired plant will be displayed. The app user may select to navigate back to the previous screen at any point using the back arrow in the upper lefthand corner of the page.
 <figure style="text-align: center;">
     <img src="images/plantlocationscreen.png" alt="Plants by Location Screen">
     <figcaption style="text-align: center;">
         Figure 8: Plants by Location Screen
     </figcaption>
 </figure>
-
-This screen displays plants commonly found in specific regions or zones, helping users choose plants that thrive in their local environment.
 
 ---
 
@@ -100,10 +110,10 @@ This screen displays plants commonly found in specific regions or zones, helping
 ### Risk Identification
 
 - **Technical Risks:**
-  - Integration challenges with external plant database APIs.
-  - Performance issues due to large database queries.
+  - Integration challenges with features such as dropdown menu filtering on search screen.
+  - Select integration capabilities due to usage of .json file as application's knowledge base. 
 - **Operational Risks:**
-  - Server downtime affecting app availability.
+  - Limited plant selection available on application. 
   - User data security vulnerabilities.
 - **Market Risks:**
   - Competing apps offering similar functionalities.
@@ -113,10 +123,10 @@ This screen displays plants commonly found in specific regions or zones, helping
 
 - **Technical Risks:**
   - Conduct thorough testing and prototyping during development.
-  - Implement caching mechanisms for improved performance.
+  - Less risks were associated with implementation of a .json file compared to connecting an external database such as MongoDB for the application's knowledge base.
 - **Operational Risks:**
+  - Staying up to date on newly released APIs that may apply.
   - Regular security audits and updates.
-  - Cloud-based hosting with redundancy for improved uptime.
 - **Market Risks:**
   - Continuous market research and user feedback integration.
   - Agile development approach for rapid adaptation to trends.
@@ -127,21 +137,27 @@ This screen displays plants commonly found in specific regions or zones, helping
 
 ### What Went Well
 
-- Successful implementation of core features like plant search and care instructions.
-- Positive user feedback on app usability and design.
-- Effective collaboration among team members throughout development.
+- Successful implementation of core features such as search bar, filtering dropdown menu, and location filtering.
+- Positive user feedback on app organization, ease of use, and design.
+- Effective collaboration among team members throughout development process.
 
 ### Areas for Improvement
 
-- Enhancing database scalability to accommodate future growth.
-- Streamlining user onboarding and tutorial processes.
+- Enhancing application's knowledge base scalability to accommodate future growth.
+- Streamlining user tutorial processes.
 - Implement notification system for watering and sunlight reminders.
 
 ### Lessons Learned
 
 - Importance of user-centered design in app development.
 - Value of iterative testing and continuous improvement.
-- Team communication and coordination are crucial for project success.
+- Team communication and coordination are crucial for project success. The Jira application improved task delegation across team to meet project development checkpoints and deadlines. Figure 9 shows a sample sprint from the development process of the Happy Plants application.
+<figure style="text-align: center;">
+    <img src="images/plantlocationscreen.png" alt="Plants by Location Screen">
+    <figcaption style="text-align: center;">
+        Figure 9: Sample Sprint from Development Process within Jira Application
+    </figcaption>
+</figure>
 
 ---
 
