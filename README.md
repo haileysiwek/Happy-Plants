@@ -188,7 +188,8 @@ Happy Plants has successfully provided plant enthusiasts with a robust tool to e
 
 # 9 Walkthrough
 
-Add link to video here.
+Youtube Demo
+https://www.youtube.com/watch?v=pfnBohsRoKM
 
 ---
 
