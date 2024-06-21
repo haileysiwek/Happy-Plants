@@ -89,7 +89,7 @@ Navigating to the "Search Plants" screen from the home screen, the search screen
 </figure>
 
 ### 4.4 Location Input Screen
-Navigating to the "My Location" screen from the home screen, the location screen helps users find plants suitable for their geographical location. On the page, the user must simply selected one of the listed general locations to represent their personal home gardening location.
+Navigating to the "My Location" screen from the home screen, the location screen helps users find plants suitable for their geographical location. On the page shown in Figure 8, the user must simply selected one of the listed general locations to represent their personal home gardening location.
 <figure style="text-align: center;">
     <img src="images/locationscreen.png" alt="Location Screen">
     <figcaption style="text-align: center;">
@@ -98,7 +98,7 @@ Navigating to the "My Location" screen from the home screen, the location screen
 </figure>
 
 ### 4.5 Plants by Location Screen
-Navigating to the "Plants by Location" screen from the home screen, this screen displays plants commonly found in the user's selected location from the "My Location" page, helping users choose plants that thrive in their general environment. Figure 9 shows the generated "Plants by Location" screen when the user had selected "North America" for their location on the "My Location" screen. The page in Figure 8 contains a filtered list of all the plants within the application's knowledge base that are commonly located in North America.
+Navigating to the "Plants by Location" screen from the home screen, this screen displays plants commonly found in the user's selected location from the "My Location" page, helping users choose plants that thrive in their general environment. Figure 9 shows the generated "Plants by Location" screen when the user had selected "North America" for their location on the "My Location" screen. The page in Figure 9 contains a filtered list of all the plants within the application's knowledge base that are commonly located in North America.
 Upon the user selecting a plant from the generated list, a page with all the details and care routine information for the desired plant will be displayed. The app user may select to navigate back to the previous screen at any point using the back arrow in the upper lefthand corner of the page.
 <figure style="text-align: center;">
     <img src="images/plantlocationscreen.png" alt="Plants by Location Screen">
@@ -157,11 +157,17 @@ Upon the user selecting a plant from the generated list, a page with all the det
 
 - Importance of user-centered design in app development.
 - Value of iterative testing and continuous improvement.
-- Team communication and coordination are crucial for project success. The Jira application improved task delegation across team to meet project development checkpoints and deadlines. Figure 9 shows a sample sprint from the development process of the Happy Plants application.
+- Team communication and coordination are crucial for project success. The Jira application improved task delegation across team members to meet project development checkpoints and deadlines. Figure 10 shows a sample sprint in Jira from the development process of the Happy Plants application, and Figure 11 presents a list in Jira of tasks assigned across different sprints for the project development.
 <figure style="text-align: center;">
     <img src="images/Jira.JPG" alt="Jira Screen">
     <figcaption style="text-align: center;">
         Figure 10: Sample Sprint from Development Process within Jira Application
+    </figcaption>
+</figure>
+<figure style="text-align: center;">
+    <img src="images/Jira.JPG" alt="Jira Screen">
+    <figcaption style="text-align: center;">
+        Figure 11: Full Task List from Development Process within Jira Application
     </figcaption>
 </figure>
 
