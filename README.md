@@ -165,7 +165,7 @@ Upon the user selecting a plant from the generated list, a page with all the det
     </figcaption>
 </figure>
 <figure style="text-align: center;">
-    <img src="images/Jira.JPG" alt="Jira Screen">
+    <img src="images/JiraList.png" alt="Jira List Screen">
     <figcaption style="text-align: center;">
         Figure 11: Full Task List from Development Process within Jira Application
     </figcaption>
