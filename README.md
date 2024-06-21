@@ -30,36 +30,36 @@ Happy Plants is a user-friendly application that revolutionizes the way plant en
 
 The Happy Plants app is based on a simple frontend and database architecture, with the database being a .json file. The app caters to plant enthusiasts by offering a search function that filters plants by name or family and a feature that identifies plants based on the app user's general location. Users can view personalized care routines for each plant and discover similar plants for easier care alternatives. This comprehensive app empowers users to find the perfect plant match and ensure their leafy companions flourish.
 <figure style="text-align: center;">
-    <img src="images/Class.png" alt="Class Diagram">
+    <img src="images/architectureimage.JPG" alt="Architecture Diagram">
     <figcaption>Figure 1: Architecture Diagram</figcaption>
 </figure>
 
 ## 3.1 Class Diagram
 This section contains a class diagram for the Happy Plants app system. Figure 2 shows a general conception of our boundary class, the 6 control classes: MyLocationScreen, SearchPlantsScreen, PlantsByLocationScreen, Plant, Main, and Home, and the 3 entity classes: filterPlantsByLocation, fetchPlants, and PlantDetailsScreen. The class diagram is structured in this way because the boundary conceptually is all the screens that the uses may choose to interface with. As for the control classes, from the Main class, you are navigated to the Home class, from where you can be navigated to SearchPlantsScreen class or MyLocationScreen class or PlantsByLocationScreen class. As for the argument for the entities, filterPlantsByLocation and fetchPlants classes are classes used by control classes to create the display made through calling the PlantsDetailsScreen class.
 <figure style="text-align: center;">
-    <img src="images/Class.png" alt="Class Diagram">
+    <img src="images/CLASSW.jpeg" alt="Class Diagram">
     <figcaption>Figure 2: Class Diagram</figcaption>
 </figure>
 
 ## 3.2 Sequence Diagram
 This section contains a sequence diagram for the Happy Plants app system. Figure 3 shows the order of operations associated with the functionality of the Happy Plants application interfacing with the .json file database.
 <figure style="text-align: center;">
-    <img src="images/Sequence1.png" alt="Sequence Diagram 1">
-    <img src="images/Sequence2.png" alt="Sequence Diagram 2">
+    <img src="images/SEQW1.jpeg" alt="Sequence Diagram 1">
+    <img src="images/SEQW2.jpeg" alt="Sequence Diagram 2">
     <figcaption>Figure 3: Sequence Diagram</figcaption>
 </figure>
 
 ## 3.3 Communication Diagram
 As approved by the CIS 350 course instructor, a communication diagram was used in place of an activity diagram. This section contains a communication diagram for the Happy Plants app system. Figure 4 shows the communication interactions between the app user, the user interface class, the 3 general control classes: MyLocationScreen, SearchPlantsScreen, and PlantsByLocationScreen, and the 3 entity classes: FilterPlantsByLocation, fetchPlants, and PlantDetailsScreen. The user interface class is a conceptual representation of all the screens denoted in the class diagram encompassed in Figure 2. Arguments for identification of classes can be found in the description in section 3.1.
 <figure style="text-align: center;">
-    <img src="images/Activity Diagram.png" alt="Activity Diagram">
+    <img src="images/COMW.jpeg" alt="Communication Diagram">
     <figcaption>Figure 4: Communication Diagram</figcaption>
 </figure>
 
 ## 3.4 Use Case Diagram
 This section contains a use case diagram for the Happy Plants app system. Figure 5 shows the various cases in which the app user can utilize the Happy Plants application to meet their plants needs and find new plants to add to their home. These cases include being able to find desired plants, searcing by name, family, and location.
 <figure style="text-align: center;">
-    <img src="images/Activity Diagram.png" alt="Activity Diagram">
+    <img src="images/USECASEW.jpeg" alt="Use Case Diagram">
     <figcaption>Figure 5: Use Case Diagram</figcaption>
 </figure>
 
@@ -159,7 +159,7 @@ Upon the user selecting a plant from the generated list, a page with all the det
 - Value of iterative testing and continuous improvement.
 - Team communication and coordination are crucial for project success. The Jira application improved task delegation across team to meet project development checkpoints and deadlines. Figure 9 shows a sample sprint from the development process of the Happy Plants application.
 <figure style="text-align: center;">
-    <img src="images/plantlocationscreen.png" alt="Plants by Location Screen">
+    <img src="images/Jira.JPG" alt="Jira Screen">
     <figcaption style="text-align: center;">
         Figure 10: Sample Sprint from Development Process within Jira Application
     </figcaption>
