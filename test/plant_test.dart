@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:cis350/plant.dart'; // Replace with actual import path
+import 'package:cis350/plant.dart';
 
 void main() {
   group('Plant.fromJson', () {

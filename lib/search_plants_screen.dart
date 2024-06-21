@@ -48,22 +48,33 @@ class SearchPlantsScreenState extends State<SearchPlantsScreen> {
     });
   }
 
-  // Design filtering for search screen by name and by family.
-  void _filterList() {
-    String searchText = _textController.text.toLowerCase();
-    String selectedFamily = _selectedOption.toLowerCase();
+  // Calls function to sort plants
+  void _filterList() async {
+    final searchText = _textController.text;
+    final selectedFamily = _selectedOption;
+    final filteredPlants =
+        await filterPlantsBySearchCriteria(searchText, selectedFamily);
 
     setState(() {
-      filteredList = plantList.where((plant) {
-        bool matchesSearchText =
-            plant.commonName.toLowerCase().contains(searchText) ||
-                plant.scientificName.toLowerCase().contains(searchText);
-        bool matchesFamily = selectedFamily == 'family' ||
-            selectedFamily == 'unknown' ||
-            plant.family.toLowerCase().contains(selectedFamily);
-        return matchesSearchText && matchesFamily;
-      }).toList();
+      filteredList = filteredPlants;
     });
+  }
+
+  // Sorts plant list by search text and family selection. Returns a filtered list
+  Future<List<Plant>> filterPlantsBySearchCriteria(
+      String searchText, String selectedFamily) async {
+    searchText = searchText.toLowerCase();
+    selectedFamily = selectedFamily.toLowerCase();
+
+    return plantList.where((plant) {
+      bool matchesSearchText =
+          plant.commonName.toLowerCase().contains(searchText) ||
+              plant.scientificName.toLowerCase().contains(searchText);
+      bool matchesFamily = selectedFamily == 'family' ||
+          selectedFamily == 'unknown' ||
+          plant.family.toLowerCase().contains(selectedFamily);
+      return matchesSearchText && matchesFamily;
+    }).toList();
   }
 
   /// Designs a Search Plants page including full list of plant selections, search bar for plant name, and dropdown menu for plant family filtering.
