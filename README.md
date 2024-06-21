@@ -164,6 +164,7 @@ Upon the user selecting a plant from the generated list, a page with all the det
         Figure 10: Sample Sprint from Development Process within Jira Application
     </figcaption>
 </figure>
+
 <figure style="text-align: center;">
     <img src="images/JiraList.png" alt="Jira List Screen">
     <figcaption style="text-align: center;">
