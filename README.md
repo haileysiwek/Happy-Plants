@@ -129,7 +129,7 @@ Upon the user selecting a plant from the generated list, a page with all the det
 - **Technical Risks:**
   - Conduct thorough testing and prototyping during development.
   - Less risks were associated with implementation of a .json file compared to connecting an external database such as MongoDB for the application's knowledge base.
-  - Wrote unit tests for the Plants(), fetchPlants(), filterPlantsByLocation(), and filterPlantsBySearchCriteria() classes, which were responsible for the Happy Plants app basic functionality/logic and were made to be public classes for unit testing purposes.
+  - Wrote unit tests for the Plants(), fetchPlants(), filterPlantsByLocation(), and filterPlantsBySearchCriteria() classes, which were responsible for the Happy Plants app basic functionality (logic for clickable features of application) and were made to be public classes for unit testing purposes.
 - **Operational Risks:**
   - Staying up to date on newly released APIs that may apply.
   - Regular security audits and updates.
