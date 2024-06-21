@@ -57,7 +57,7 @@ As approved by the CIS 350 course instructor, a communication diagram was used i
 </figure>
 
 ## 3.4 Use Case Diagram
-This section contains a use case diagram for the Happy Plants app system. Figure 5 shows the various cases in which the app user can utilize the Happy Plants application to meet their plants needs and find new plants to add to their home.
+This section contains a use case diagram for the Happy Plants app system. Figure 5 shows the various cases in which the app user can utilize the Happy Plants application to meet their plants needs and find new plants to add to their home. These cases include being able to find desired plants, searcing by name, family, and location.
 <figure style="text-align: center;">
     <img src="images/Activity Diagram.png" alt="Activity Diagram">
     <figcaption>Figure 5: Use Case Diagram</figcaption>
