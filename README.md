@@ -115,7 +115,8 @@ Upon the user selecting a plant from the generated list, a page with all the det
 
 - **Technical Risks:**
   - Integration challenges with features such as dropdown menu filtering on search screen.
-  - Select integration capabilities due to usage of .json file as application's knowledge base. 
+  - Select integration capabilities due to usage of .json file as application's knowledge base.
+  - Challenges faced with unit testing the various private classes within the FlutLab application.
 - **Operational Risks:**
   - Limited plant selection available on application. 
   - User data security vulnerabilities.
@@ -128,6 +129,7 @@ Upon the user selecting a plant from the generated list, a page with all the det
 - **Technical Risks:**
   - Conduct thorough testing and prototyping during development.
   - Less risks were associated with implementation of a .json file compared to connecting an external database such as MongoDB for the application's knowledge base.
+  - Wrote unit tests for the Plants(), fetchPlants(), filterPlantsByLocation(), and filterPlantsBySearchCriteria() classes, which were responsible for the Happy Plants app basic functionality/logic and were made to be public classes for unit testing purposes.
 - **Operational Risks:**
   - Staying up to date on newly released APIs that may apply.
   - Regular security audits and updates.
